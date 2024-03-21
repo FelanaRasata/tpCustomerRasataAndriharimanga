@@ -20,8 +20,8 @@ import mg.itu.rasata.andriharimanga.tpcustomer.service.CustomerManager;
 @Named(value = "customerBean")
 @ViewScoped
 public class CustomerBean implements Serializable {
-    
-    private List<Customer> customerList;  
+
+    private List<Customer> customerList;
 
     @Inject
     private CustomerManager customerManager;
@@ -31,15 +31,20 @@ public class CustomerBean implements Serializable {
      */
     public CustomerBean() {
     }
-    
-     /** 
-   * Retourne la liste des clients pour affichage dans une DataTable.
-   */  
-  public List<Customer> getCustomers() {
-    if (customerList == null) {
-      customerList = customerManager.getAllCustomers();
+
+    /**
+     * Retourne la liste des clients pour affichage dans une DataTable.
+     */
+    public List<Customer> getCustomers() {
+        if (customerList == null) {
+            customerList = customerManager.getAllCustomers();
+        }
+        return customerList;
     }
-    return customerList;
-  }  
+
+    public String[] getStates() {
+        String[] states = new String[]{"FL", "GA", "TX", "CA", "NY", "MI"};
+        return states;
+    }
 
 }
