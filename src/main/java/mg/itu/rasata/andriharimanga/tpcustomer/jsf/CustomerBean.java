@@ -22,6 +22,7 @@ import mg.itu.rasata.andriharimanga.tpcustomer.service.CustomerManager;
 public class CustomerBean implements Serializable {
 
     private List<Customer> customerList;
+    
 
     @Inject
     private CustomerManager customerManager;
@@ -42,8 +43,11 @@ public class CustomerBean implements Serializable {
         return customerList;
     }
 
-    public String[] getStates() {
-        String[] states = new String[]{"FL", "GA", "TX", "CA", "NY", "MI"};
+    /**
+     * Retourne la liste des Etats disponible pour affichage dans une DataTable.
+     */
+    public List<String> getStates() {
+        List<String> states = customerManager.getAllCustomerStates();
         return states;
     }
 

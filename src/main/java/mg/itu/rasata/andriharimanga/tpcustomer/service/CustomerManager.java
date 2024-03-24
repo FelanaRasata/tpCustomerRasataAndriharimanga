@@ -37,4 +37,10 @@ public class CustomerManager {
     public void persist(Customer customer) {
        em.persist(customer);
     }
+    
+    public List<String> getAllCustomerStates() {
+       Query query = em.createNativeQuery("select distinct(state) from customer");
+       return query.getResultList();
+    }
+
 }
