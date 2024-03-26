@@ -39,7 +39,7 @@ public class CustomerManager {
     }
     
     public List<String> getAllCustomerStates() {
-       Query query = em.createNativeQuery("select distinct(state) from customer");
+       Query query = em.createNamedQuery("Customer.findAllStates");
        return query.getResultList();
     }
 
