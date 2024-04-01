@@ -9,7 +9,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import java.util.List;
-import mg.itu.rasata.andriharimanga.tpcustomer.entity.Customer;
 import mg.itu.rasata.andriharimanga.tpcustomer.entity.Discount;
 
 /**
@@ -27,6 +26,12 @@ public class DiscountManager {
         return query.getResultList();
     }
 
+    public List<Discount> getAllDiscountsOrderedByRateDesc() {
+        Query query = em.createNamedQuery("Discount.findAllOrderedByRateDesc");
+        return query.getResultList();
+    }
+
+    
     public Discount findById(String code) {
         return em.find(Discount.class, code);
     }
